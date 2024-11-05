@@ -19,24 +19,33 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3yu34")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background"]
 layout_mode = 2
-color = Color(0.380392, 1, 1, 0.419608)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background"]
+[node name="InputLetterContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/Background/VBoxContainer"]
+[node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/CenterContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="WordContainer" parent="CanvasLayer/Background/VBoxContainer" instance=ExtResource("2_0vspn")]
+[node name="WordContainer" parent="CanvasLayer/Background/HBoxContainer/CenterContainer" instance=ExtResource("2_0vspn")]
 layout_mode = 2
 currentWord = "Solidarity"
 
-[node name="Control2" type="Control" parent="CanvasLayer/Background/VBoxContainer"]
+[node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/CenterContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
+
+[node name="WrongLetterContainer" type="Control" parent="CanvasLayer/Background/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
