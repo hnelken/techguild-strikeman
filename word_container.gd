@@ -1,18 +1,31 @@
 extends HBoxContainer
 
+class_name WordContainer
+
 @export var letterScene: PackedScene
 @export var currentWord: String
+@export var letterModels: Array[CorrectLetterModel] = []
 
-func setupForWord(word: String) -> void:
+func setCurrentWord(word: String) -> void:
 	currentWord = word
+	letterModels = []
+	_setup()
+	
+func _setup() -> void:
 	for child in get_children():
 		remove_child(child)
 		child.queue_free()
 	
-	for letter in word:
-		var letterNode = letterScene.instantiate()
-		add_child(letterNode)
-		letterNode.setLetter(letter)
+	for letter in currentWord:
+		var letterModel = CorrectLetterModel.new()
+		letterModel.letter = letter
+		letterModels.append(letterModel)
 	
-func _ready() -> void:
-	setupForWord(currentWord)
+	for letterModel in letterModels:
+		var letterNode = letterScene.instantiate() as Letter
+		letterNode.letterModel = letterModel
+		add_child(letterNode)
+
+func handleGuess(letter: String) -> void:
+	for letterModel in letterModels:
+		letterModel.handleGuess(letter)

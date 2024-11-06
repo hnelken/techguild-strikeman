@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfa3o3pwpxc48"]
+[gd_scene load_steps=5 format=3 uid="uid://bfa3o3pwpxc48"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_gp2fx"]
 [ext_resource type="PackedScene" uid="uid://bsy2xp26fkwy2" path="res://word_container.tscn" id="2_0vspn"]
+[ext_resource type="PackedScene" uid="uid://c2lfsrgg2yg77" path="res://letter_list.tscn" id="2_gc47r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yu34"]
 bg_color = Color(1, 0.25098, 0.25098, 1)
@@ -22,30 +23,70 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3yu34")
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background"]
 layout_mode = 2
 
-[node name="InputLetterContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
+[node name="InputLetterListContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="CenterContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/CenterContainer"]
+[node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="WordContainer" parent="CanvasLayer/Background/HBoxContainer/CenterContainer" instance=ExtResource("2_0vspn")]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_right = 44
+
+[node name="InputLetterList" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer" instance=ExtResource("2_gc47r")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="MiddleContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="WordContainer" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer" instance=ExtResource("2_0vspn")]
+unique_name_in_owner = true
 layout_mode = 2
 currentWord = "Solidarity"
 
-[node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/CenterContainer"]
+[node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.25
 
-[node name="WrongLetterContainer" type="Control" parent="CanvasLayer/Background/HBoxContainer"]
+[node name="WrongLetterListContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer"]
+layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_right = 44
+
+[node name="WrongLetterList" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer" instance=ExtResource("2_gc47r")]
+unique_name_in_owner = true
+layout_mode = 2
+listType = 1
+
+[node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5

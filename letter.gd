@@ -1,15 +1,27 @@
-extends Control
+extends CenterContainer
 
-var currentLetter: String
+class_name Letter
+
+signal onLetterTapped(letter: String)
+
+@export var letterModel: BaseLetterModel
+
 @onready var letterLabel: Label = %LetterLabel
+@onready var underline: ColorRect = %Underline
 
 func _ready() -> void:
-	#letterLabel.visible = false
-	setLetter(currentLetter)
+	_updateLetterUI()
+	letterModel.didUpdateLetterModel.connect(_updateLetterUI)
 
-func revealLetter() -> void:
-	letterLabel.visible = true
+func _updateLetterUI():
+	letterLabel.text = letterModel.letter
+	letterLabel.visible = letterModel.isLetterVisible()
+	underline.visible = letterModel.isUnderlineVisible()
 
-func setLetter(letter: String) -> void:
-	currentLetter = letter.capitalize()
-	letterLabel.text = letter.capitalize()
+func _letterLabelTapped(event: InputEvent) -> void:
+	if not letterModel.isTappable(): return
+	
+	if event is InputEventMouseButton and event.pressed:
+		print(letterModel.letter)
+		onLetterTapped.emit(letterModel.letter)
+		accept_event()
