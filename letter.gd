@@ -22,6 +22,5 @@ func _letterLabelTapped(event: InputEvent) -> void:
 	if not letterModel.isTappable(): return
 	
 	if event is InputEventMouseButton and event.pressed:
-		print(letterModel.letter)
 		onLetterTapped.emit(letterModel.letter)
 		accept_event()

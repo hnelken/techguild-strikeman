@@ -10,7 +10,13 @@ func setCurrentWord(word: String) -> void:
 	currentWord = word
 	letterModels = []
 	_setup()
-	
+
+func isWordSolved() -> bool:
+	for letterModel in letterModels:
+		if not letterModel.hasBeenGuessed:
+			return false
+	return true
+
 func _setup() -> void:
 	for child in get_children():
 		remove_child(child)
