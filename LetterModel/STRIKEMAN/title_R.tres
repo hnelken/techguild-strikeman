@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_sw581")
-letter = "C"
+letter = "R"
 hasBeenGuessed = false

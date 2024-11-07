@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dns10dvexn2ds"
-path="res://.godot/imported/spaceman-1.png-81a4207571f3d42a9af30c5830b70494.ctex"
+uid="uid://bta32646o163y"
+path="res://.godot/imported/strikeman-4.png-b092b40ff33dac91c0afec6301f46812.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Spaceman/spaceman-1.png"
-dest_files=["res://.godot/imported/spaceman-1.png-81a4207571f3d42a9af30c5830b70494.ctex"]
+source_file="res://Strikeman/strikeman-4.png"
+dest_files=["res://.godot/imported/strikeman-4.png-b092b40ff33dac91c0afec6301f46812.ctex"]
 
 [params]
 

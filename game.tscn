@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfa3o3pwpxc48"]
+[gd_scene load_steps=19 format=3 uid="uid://bfa3o3pwpxc48"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_gp2fx"]
 [ext_resource type="PackedScene" uid="uid://bsy2xp26fkwy2" path="res://word_container.tscn" id="2_0vspn"]
@@ -6,24 +6,29 @@
 [ext_resource type="PackedScene" uid="uid://c2lfsrgg2yg77" path="res://letter_list.tscn" id="2_gc47r"]
 [ext_resource type="Theme" uid="uid://d3ofljg7iynf2" path="res://game_theme.tres" id="3_yd5n8"]
 [ext_resource type="PackedScene" uid="uid://swqg36yihjq6" path="res://letter.tscn" id="5_ims2l"]
-[ext_resource type="Resource" uid="uid://ca5j05ugwp6sj" path="res://LetterModel/SPACEMAN/title_P.tres" id="6_8vs55"]
-[ext_resource type="Resource" uid="uid://dam041gnxywc4" path="res://LetterModel/SPACEMAN/title_A.tres" id="7_6wbna"]
-[ext_resource type="Resource" uid="uid://cqd5b2a20773o" path="res://LetterModel/SPACEMAN/title_N.tres" id="8_hi3uk"]
-[ext_resource type="Resource" uid="uid://c88a7l6ovuw2p" path="res://LetterModel/SPACEMAN/title_S.tres" id="9_aod6v"]
-[ext_resource type="Resource" uid="uid://btoj5mbon4l5b" path="res://LetterModel/SPACEMAN/title_C.tres" id="9_ft8mt"]
-[ext_resource type="Resource" uid="uid://bpmdo6dp74rfn" path="res://LetterModel/SPACEMAN/title_E.tres" id="10_qqbmp"]
-[ext_resource type="Resource" uid="uid://kmp24l6pdw2g" path="res://LetterModel/SPACEMAN/title_M.tres" id="10_ttlbk"]
-[ext_resource type="Texture2D" uid="uid://cgbtnryquc1s7" path="res://Spaceman/spaceman-0.png" id="11_yu6qo"]
+[ext_resource type="Resource" uid="uid://dam041gnxywc4" path="res://LetterModel/STRIKEMAN/title_T.tres" id="7_6wbna"]
+[ext_resource type="Resource" uid="uid://cqd5b2a20773o" path="res://LetterModel/STRIKEMAN/title_N.tres" id="8_hi3uk"]
+[ext_resource type="Resource" uid="uid://btoj5mbon4l5b" path="res://LetterModel/STRIKEMAN/title_R.tres" id="8_hq5ei"]
+[ext_resource type="Resource" uid="uid://c88a7l6ovuw2p" path="res://LetterModel/STRIKEMAN/title_S.tres" id="9_aod6v"]
+[ext_resource type="Resource" uid="uid://ca5j05ugwp6sj" path="res://LetterModel/STRIKEMAN/title_I.tres" id="9_ph2b4"]
+[ext_resource type="Resource" uid="uid://do53oakfrr77w" path="res://LetterModel/STRIKEMAN/title_K.tres" id="10_30fvs"]
+[ext_resource type="Resource" uid="uid://bpmdo6dp74rfn" path="res://LetterModel/STRIKEMAN/title_E.tres" id="10_qqbmp"]
+[ext_resource type="Resource" uid="uid://kmp24l6pdw2g" path="res://LetterModel/STRIKEMAN/title_M.tres" id="10_ttlbk"]
+[ext_resource type="Resource" uid="uid://ccwwa4lcd5pmr" path="res://LetterModel/STRIKEMAN/title_A.tres" id="13_hqjv0"]
+[ext_resource type="Texture2D" uid="uid://beupi5o8po5pt" path="res://Strikeman/strikeman-0.png" id="13_m3tkr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uq0l4"]
 texture = ExtResource("2_bbg8d")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0kc1"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_gp2fx")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GameLayer" type="CanvasLayer" parent="."]
 
-[node name="Background" type="PanelContainer" parent="CanvasLayer"]
+[node name="Background" type="PanelContainer" parent="GameLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,65 +36,65 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_uq0l4")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameLayer/Background"]
 layout_mode = 2
 
-[node name="InputLetterListContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
+[node name="InputLetterListContainer" type="VBoxContainer" parent="GameLayer/Background/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer"]
+[node name="TopSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/InputLetterListContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameLayer/Background/HBoxContainer/InputLetterListContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 44
 theme_override_constants/margin_right = 58
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="LeftSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer"]
+[node name="LeftSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="HintLabel" type="Label" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HintLabel" type="Label" parent="GameLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "(click here to guess)"
 horizontal_alignment = 1
 
-[node name="InputLetterList" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
+[node name="InputLetterList" parent="GameLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
-[node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer"]
+[node name="BottomSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/InputLetterListContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="MiddleContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
+[node name="MiddleContainer" type="VBoxContainer" parent="GameLayer/Background/HBoxContainer"]
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.0
 alignment = 1
 
-[node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+[node name="TopSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="Title" type="Label" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+[node name="Title" type="Label" parent="GameLayer/Background/HBoxContainer/MiddleContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -101,118 +106,140 @@ text = "NYT TECH GUILD STRIKE"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="SPACEMAN" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+[node name="STRIKEMAN" type="HBoxContainer" parent="GameLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="S" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
+[node name="S" parent="GameLayer/Background/HBoxContainer/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("9_aod6v")
 
-[node name="P" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
-layout_mode = 2
-letterModel = ExtResource("6_8vs55")
-
-[node name="A" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
+[node name="T" parent="GameLayer/Background/HBoxContainer/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("7_6wbna")
 
-[node name="C" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
+[node name="R" parent="GameLayer/Background/HBoxContainer/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
-letterModel = ExtResource("9_ft8mt")
+letterModel = ExtResource("8_hq5ei")
 
-[node name="E" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
+[node name="I" parent="GameLayer/Background/HBoxContainer/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("9_ph2b4")
+
+[node name="K" parent="GameLayer/Background/HBoxContainer/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("10_30fvs")
+
+[node name="E" parent="GameLayer/Background/HBoxContainer/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("10_qqbmp")
 
-[node name="M" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
+[node name="M" parent="GameLayer/Background/HBoxContainer/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("10_ttlbk")
 
-[node name="A2" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
+[node name="A2" parent="GameLayer/Background/HBoxContainer/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
-letterModel = ExtResource("7_6wbna")
+letterModel = ExtResource("13_hqjv0")
 
-[node name="N" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
+[node name="N" parent="GameLayer/Background/HBoxContainer/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("8_hi3uk")
 
-[node name="TitleSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+[node name="TitleSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
 
-[node name="SpacemanTexture" type="TextureRect" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+[node name="StrikemanTexture" type="TextureRect" parent="GameLayer/Background/HBoxContainer/MiddleContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("11_yu6qo")
+texture = ExtResource("13_m3tkr")
 expand_mode = 5
 
-[node name="MiddleSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+[node name="MiddleSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/MiddleContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="WordContainer" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer" instance=ExtResource("2_0vspn")]
+[node name="WordContainer" parent="GameLayer/Background/HBoxContainer/MiddleContainer" instance=ExtResource("2_0vspn")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_stretch_ratio = 0.25
 currentWord = "Solidarity"
 
-[node name="HintLabel" type="Label" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+[node name="HintLabel" type="Label" parent="GameLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.5
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "(guess this word!)"
 horizontal_alignment = 1
 
-[node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+[node name="BottomSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.4
 
-[node name="WrongLetterListContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
+[node name="WrongLetterListContainer" type="VBoxContainer" parent="GameLayer/Background/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer"]
+[node name="TopSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/WrongLetterListContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameLayer/Background/HBoxContainer/WrongLetterListContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 58
 theme_override_constants/margin_right = 44
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="HintLabel" type="Label" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HintLabel" type="Label" parent="GameLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "(misses go here)"
 horizontal_alignment = 1
 
-[node name="WrongLetterList" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
+[node name="WrongLetterList" parent="GameLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 listType = 1
 
-[node name="RightSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer"]
+[node name="RightSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer"]
+[node name="BottomSpacing" type="Control" parent="GameLayer/Background/HBoxContainer/WrongLetterListContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuLayer"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o0kc1")

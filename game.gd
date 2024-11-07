@@ -1,22 +1,22 @@
 extends Node2D
 
 const wordBank: Array[String] = [
-	"Action", 
-	"Bargaining", 
-	"Picket", 
-	"Fair", 
+	"Action",
+	"Bargaining",
+	"Picket",
+	"Fair",
 	"Just Cause",
-	"Mediate", 
-	"Wages", 
-	"Hybrid", 
-	"Remote", 
-	"Union", 
-	"Negotiate", 
-	"Solidarity", 
-	"Labor", 
-	"Contract", 
-	"Equity", 
-	"United", 
+	"Mediate",
+	"Wages",
+	"Hybrid",
+	"Remote",
+	"Union",
+	"Negotiate",
+	"Solidarity",
+	"Labor",
+	"Contract",
+	"Equity",
+	"United",
 	"Power"
 ]
 
@@ -29,10 +29,11 @@ var numberOfMistakes = 0
 @onready var wordContainer: WordContainer = %WordContainer
 @onready var inputLetterList: LetterList = %InputLetterList
 @onready var wrongLetterList: LetterList = %WrongLetterList
-@onready var spacemanTexture: TextureRect = %SpacemanTexture
+@onready var strikemanTexture: TextureRect = %StrikemanTexture
 
 func _ready() -> void:
 	_assignCurrentWord()
+	_updateTexture()
 	inputLetterList.onLetterTapped.connect(_handleLetterTapped)
 
 func _assignCurrentWord() -> void:
@@ -51,12 +52,12 @@ func _handleLetterTapped(letter: String) -> void:
 		numberOfMistakes += 1
 		wrongLetterList.handleGuess(letter)
 	
-	_updateSpaceman()
+	_updateTexture()
 	_handleGameOverIfNeeded()
 
-func _updateSpaceman() -> void:
-	var imageName = "res://Spaceman/spaceman-" + str(numberOfMistakes) + ".png"
-	spacemanTexture.texture = load(imageName)
+func _updateTexture() -> void:
+	var imageName = "res://Strikeman/strikeman-" + str(numberOfMistakes) + ".png"
+	strikemanTexture.texture = load(imageName)
 
 func _handleGameOverIfNeeded() -> void:
 	var isPuzzleSolved = wordContainer.isWordSolved()
@@ -66,4 +67,3 @@ func _handleGameOverIfNeeded() -> void:
 	
 	isGameOver = true
 	wordContainer.revealWord()
-	print("win: " + str(isPuzzleSolved)) 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TitleLetterModel" load_steps=2 format=3 uid="uid://dam041gnxywc4"]
+[gd_resource type="Resource" script_class="TitleLetterModel" load_steps=2 format=3 uid="uid://ccwwa4lcd5pmr"]
 
 [ext_resource type="Script" path="res://LetterModel/title_letter_model.gd" id="1_h0qof"]
 
