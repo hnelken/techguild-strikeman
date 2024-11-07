@@ -30,8 +30,9 @@ func _ready() -> void:
 func setup() -> void:
 	letterModels = []
 	for child in get_children():
-		remove_child(child)
-		child.queue_free()
+		if child is Letter:
+			remove_child(child)
+			child.queue_free()
 	
 	for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
 		var letterModel = _letterModelForLetter(letter)

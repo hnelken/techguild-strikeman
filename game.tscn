@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfa3o3pwpxc48"]
+[gd_scene load_steps=6 format=3 uid="uid://bfa3o3pwpxc48"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_gp2fx"]
 [ext_resource type="PackedScene" uid="uid://bsy2xp26fkwy2" path="res://word_container.tscn" id="2_0vspn"]
 [ext_resource type="PackedScene" uid="uid://c2lfsrgg2yg77" path="res://letter_list.tscn" id="2_gc47r"]
+[ext_resource type="Theme" uid="uid://d3ofljg7iynf2" path="res://game_theme.tres" id="3_yd5n8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yu34"]
 bg_color = Color(1, 1, 1, 1)
@@ -36,7 +37,7 @@ size_flags_stretch_ratio = 1.5
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 44
-theme_override_constants/margin_right = 44
+theme_override_constants/margin_right = 58
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer"]
 layout_mode = 2
@@ -50,15 +51,15 @@ size_flags_stretch_ratio = 1.5
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HintLabel" type="Label" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "(click here to guess!)"
+text = "(click here to guess)"
 horizontal_alignment = 1
 
 [node name="InputLetterList" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
 [node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer"]
@@ -67,7 +68,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
 [node name="MiddleContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.0
 alignment = 1
@@ -75,17 +76,68 @@ alignment = 1
 [node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
+size_flags_stretch_ratio = 0.3
+
+[node name="Title" type="Label" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme = ExtResource("3_yd5n8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "NYT TECH GUILD STRIKE"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme = ExtResource("3_yd5n8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "HANGMAN"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TitleSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
 
 [node name="WordContainer" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer" instance=ExtResource("2_0vspn")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_stretch_ratio = 0.25
 currentWord = "Solidarity"
+
+[node name="HintLabel" type="Label" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "(guess this word!)"
+horizontal_alignment = 1
+
+[node name="MiddleSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/MiddleSpacing"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.25
+size_flags_stretch_ratio = 0.3
 
 [node name="WrongLetterListContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
 layout_mode = 2
@@ -99,19 +151,28 @@ size_flags_stretch_ratio = 1.5
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 44
+theme_override_constants/margin_left = 58
 theme_override_constants/margin_right = 44
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="WrongLetterList" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_gc47r")]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "(mistakes go here)"
+horizontal_alignment = 1
+
+[node name="WrongLetterList" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 listType = 1
 
-[node name="LeftSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer"]
+[node name="RightSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
