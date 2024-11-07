@@ -66,3 +66,4 @@ func _handleGameOverIfNeeded() -> void:
 	
 	isGameOver = true
 	wordContainer.revealWord()
+	print("win: " + str(isPuzzleSolved)) 

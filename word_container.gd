@@ -13,7 +13,7 @@ func setCurrentWord(word: String) -> void:
 
 func isWordSolved() -> bool:
 	for letterModel in letterModels:
-		if not letterModel.hasBeenGuessed:
+		if not letterModel.isEmptySpace() and not letterModel.hasBeenGuessed:
 			return false
 	return true
 

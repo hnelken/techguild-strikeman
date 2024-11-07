@@ -9,6 +9,7 @@ func reveal() -> void:
 	didUpdateLetterModel.emit()
 
 func isBackgroundVisible() -> bool:
+	if isEmptySpace(): return false
 	return hasBeenGuessed or isRevealed
 
 func backgroundColor() -> Color:
@@ -21,7 +22,10 @@ func isLetterVisible() -> bool:
 	return hasBeenGuessed or isRevealed
 
 func isUnderlineVisible() -> bool:
-	return true
+	return not isEmptySpace()
 	
 func isTappable() -> bool:
 	return false
+
+func isEmptySpace() -> bool:
+	return letter == " "

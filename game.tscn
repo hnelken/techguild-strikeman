@@ -101,39 +101,39 @@ text = "NYT TECH GUILD STRIKE"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HANGMAN" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+[node name="SPACEMAN" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="S" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+[node name="S" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("9_aod6v")
 
-[node name="P" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+[node name="P" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("6_8vs55")
 
-[node name="A" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+[node name="A" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("7_6wbna")
 
-[node name="C" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+[node name="C" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("9_ft8mt")
 
-[node name="E" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+[node name="E" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("10_qqbmp")
 
-[node name="M" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+[node name="M" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("10_ttlbk")
 
-[node name="A2" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+[node name="A2" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("7_6wbna")
 
-[node name="N" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+[node name="N" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/SPACEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("8_hi3uk")
 
