@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c2lfsrgg2yg77" path="res://letter_list.tscn" id="2_gc47r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yu34"]
-bg_color = Color(1, 0.25098, 0.25098, 1)
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_gp2fx")
@@ -38,8 +38,27 @@ size_flags_horizontal = 3
 theme_override_constants/margin_left = 44
 theme_override_constants/margin_right = 44
 
-[node name="InputLetterList" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer" instance=ExtResource("2_gc47r")]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="LeftSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "(click here to guess!)"
+horizontal_alignment = 1
+
+[node name="InputLetterList" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
 [node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer"]
@@ -48,7 +67,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
 [node name="MiddleContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+size_flags_stretch_ratio = 2.0
 alignment = 1
 
 [node name="TopSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
@@ -81,10 +102,20 @@ size_flags_horizontal = 3
 theme_override_constants/margin_left = 44
 theme_override_constants/margin_right = 44
 
-[node name="WrongLetterList" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer" instance=ExtResource("2_gc47r")]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="WrongLetterList" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_gc47r")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 listType = 1
+
+[node name="LeftSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 
 [node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer"]
 layout_mode = 2

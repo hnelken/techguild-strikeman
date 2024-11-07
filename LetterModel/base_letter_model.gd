@@ -7,6 +7,12 @@ signal didUpdateLetterModel()
 @export var letter = "A"
 @export var hasBeenGuessed = false
 
+func isBackgroundVisible() -> bool:
+	return true
+
+func backgroundColor() -> Color:
+	return Color.DIM_GRAY
+
 func isLetterVisible() -> bool:
 	return true
 
