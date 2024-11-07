@@ -1,12 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfa3o3pwpxc48"]
+[gd_scene load_steps=16 format=3 uid="uid://bfa3o3pwpxc48"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_gp2fx"]
 [ext_resource type="PackedScene" uid="uid://bsy2xp26fkwy2" path="res://word_container.tscn" id="2_0vspn"]
+[ext_resource type="Texture2D" uid="uid://caeki1acqtp55" path="res://paper.jpg" id="2_bbg8d"]
 [ext_resource type="PackedScene" uid="uid://c2lfsrgg2yg77" path="res://letter_list.tscn" id="2_gc47r"]
 [ext_resource type="Theme" uid="uid://d3ofljg7iynf2" path="res://game_theme.tres" id="3_yd5n8"]
+[ext_resource type="PackedScene" uid="uid://swqg36yihjq6" path="res://letter.tscn" id="5_ims2l"]
+[ext_resource type="Resource" uid="uid://ca5j05ugwp6sj" path="res://LetterModel/SPACEMAN/title_P.tres" id="6_8vs55"]
+[ext_resource type="Resource" uid="uid://dam041gnxywc4" path="res://LetterModel/SPACEMAN/title_A.tres" id="7_6wbna"]
+[ext_resource type="Resource" uid="uid://cqd5b2a20773o" path="res://LetterModel/SPACEMAN/title_N.tres" id="8_hi3uk"]
+[ext_resource type="Resource" uid="uid://c88a7l6ovuw2p" path="res://LetterModel/SPACEMAN/title_S.tres" id="9_aod6v"]
+[ext_resource type="Resource" uid="uid://btoj5mbon4l5b" path="res://LetterModel/SPACEMAN/title_C.tres" id="9_ft8mt"]
+[ext_resource type="Resource" uid="uid://bpmdo6dp74rfn" path="res://LetterModel/SPACEMAN/title_E.tres" id="10_qqbmp"]
+[ext_resource type="Resource" uid="uid://kmp24l6pdw2g" path="res://LetterModel/SPACEMAN/title_M.tres" id="10_ttlbk"]
+[ext_resource type="Texture2D" uid="uid://cgbtnryquc1s7" path="res://Spaceman/spaceman-0.png" id="11_yu6qo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yu34"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uq0l4"]
+texture = ExtResource("2_bbg8d")
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_gp2fx")
@@ -19,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3yu34")
+theme_override_styles/panel = SubResource("StyleBoxTexture_uq0l4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background"]
 layout_mode = 2
@@ -52,6 +62,7 @@ size_flags_stretch_ratio = 1.5
 layout_mode = 2
 
 [node name="HintLabel" type="Label" parent="CanvasLayer/Background/HBoxContainer/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "(click here to guess)"
@@ -90,23 +101,58 @@ text = "NYT TECH GUILD STRIKE"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Subtitle" type="Label" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
-custom_minimum_size = Vector2(250, 0)
+[node name="HANGMAN" type="HBoxContainer" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
-theme = ExtResource("3_yd5n8")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-text = "HANGMAN"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+alignment = 1
+
+[node name="S" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("9_aod6v")
+
+[node name="P" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("6_8vs55")
+
+[node name="A" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("7_6wbna")
+
+[node name="C" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("9_ft8mt")
+
+[node name="E" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("10_qqbmp")
+
+[node name="M" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("10_ttlbk")
+
+[node name="A2" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("7_6wbna")
+
+[node name="N" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/HANGMAN" instance=ExtResource("5_ims2l")]
+layout_mode = 2
+letterModel = ExtResource("8_hi3uk")
 
 [node name="TitleSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
+
+[node name="SpacemanTexture" type="TextureRect" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("11_yu6qo")
+expand_mode = 5
+
+[node name="MiddleSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 
 [node name="WordContainer" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer" instance=ExtResource("2_0vspn")]
 unique_name_in_owner = true
@@ -120,19 +166,6 @@ size_flags_stretch_ratio = 0.5
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "(guess this word!)"
 horizontal_alignment = 1
-
-[node name="MiddleSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer/MiddleSpacing"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="BottomSpacing" type="Control" parent="CanvasLayer/Background/HBoxContainer/MiddleContainer"]
 layout_mode = 2
@@ -160,10 +193,11 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HintLabel" type="Label" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "(mistakes go here)"
+text = "(misses go here)"
 horizontal_alignment = 1
 
 [node name="WrongLetterList" parent="CanvasLayer/Background/HBoxContainer/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]

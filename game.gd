@@ -29,6 +29,7 @@ var numberOfMistakes = 0
 @onready var wordContainer: WordContainer = %WordContainer
 @onready var inputLetterList: LetterList = %InputLetterList
 @onready var wrongLetterList: LetterList = %WrongLetterList
+@onready var spacemanTexture: TextureRect = %SpacemanTexture
 
 func _ready() -> void:
 	_assignCurrentWord()
@@ -50,9 +51,18 @@ func _handleLetterTapped(letter: String) -> void:
 		numberOfMistakes += 1
 		wrongLetterList.handleGuess(letter)
 	
-	if wordContainer.isWordSolved():
-		isGameOver = true
-		print("you win")
-	elif numberOfMistakes == maxNumberOfMistakes:
-		isGameOver = true
-		print("game over")
+	_updateSpaceman()
+	_handleGameOverIfNeeded()
+
+func _updateSpaceman() -> void:
+	var imageName = "res://Spaceman/spaceman-" + str(numberOfMistakes) + ".png"
+	spacemanTexture.texture = load(imageName)
+
+func _handleGameOverIfNeeded() -> void:
+	var isPuzzleSolved = wordContainer.isWordSolved()
+	var isPuzzleFailed = numberOfMistakes == maxNumberOfMistakes
+	
+	if not isPuzzleSolved and not isPuzzleFailed: return
+	
+	isGameOver = true
+	wordContainer.revealWord()

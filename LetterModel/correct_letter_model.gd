@@ -2,14 +2,23 @@ extends BaseLetterModel
 
 class_name CorrectLetterModel
 
+var isRevealed = false
+
+func reveal() -> void:
+	isRevealed = true
+	didUpdateLetterModel.emit()
+
 func isBackgroundVisible() -> bool:
-	return hasBeenGuessed
+	return hasBeenGuessed or isRevealed
 
 func backgroundColor() -> Color:
-	return Color.MEDIUM_SEA_GREEN
+	if hasBeenGuessed:
+		return Color.MEDIUM_SEA_GREEN
+	else:
+		return Color.DIM_GRAY
 
 func isLetterVisible() -> bool:
-	return hasBeenGuessed
+	return hasBeenGuessed or isRevealed
 
 func isUnderlineVisible() -> bool:
 	return true

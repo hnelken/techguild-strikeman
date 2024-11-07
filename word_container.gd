@@ -17,6 +17,10 @@ func isWordSolved() -> bool:
 			return false
 	return true
 
+func revealWord() -> void:
+	for letterModel in letterModels:
+		letterModel.reveal()
+
 func _setup() -> void:
 	for child in get_children():
 		remove_child(child)

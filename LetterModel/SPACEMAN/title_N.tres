@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TitleLetterModel" load_steps=2 format=3 uid="uid://cqd5b2a20773o"]
+
+[ext_resource type="Script" path="res://LetterModel/title_letter_model.gd" id="1_vuq4o"]
+
+[resource]
+script = ExtResource("1_vuq4o")
+letter = "N"
+hasBeenGuessed = false
