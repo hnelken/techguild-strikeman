@@ -23,6 +23,8 @@ const wordBank: Array[String] = [
 var currentWord: String = ""
 var isGameOver = false
 
+var solvedWords: Array[String] = []
+
 var numberOfMistakes = 0
 @export var maxNumberOfMistakes = 6
 
@@ -30,11 +32,21 @@ var numberOfMistakes = 0
 @onready var inputLetterList: LetterList = %InputLetterList
 @onready var wrongLetterList: LetterList = %WrongLetterList
 @onready var strikemanTexture: TextureRect = %StrikemanTexture
+@onready var menuLayer: MenuManager = %MenuLayer
 
 func _ready() -> void:
 	_assignCurrentWord()
 	_updateTexture()
 	inputLetterList.onLetterTapped.connect(_handleLetterTapped)
+	menuLayer.resetPuzzle.connect(_resetPuzzle)
+
+func _resetPuzzle() -> void:
+	numberOfMistakes = 0
+	inputLetterList.setup()
+	wrongLetterList.setup()
+	_assignCurrentWord()
+	_updateTexture()
+	isGameOver = false
 
 func _assignCurrentWord() -> void:
 	var rIndex = randi() % wordBank.size()
@@ -67,3 +79,5 @@ func _handleGameOverIfNeeded() -> void:
 	
 	isGameOver = true
 	wordContainer.revealWord()
+	await get_tree().create_timer(1.0).timeout
+	menuLayer.showResultMenu(numberOfMistakes)
