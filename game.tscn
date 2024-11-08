@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bfa3o3pwpxc48"]
+[gd_scene load_steps=35 format=3 uid="uid://bfa3o3pwpxc48"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_gp2fx"]
 [ext_resource type="PackedScene" uid="uid://bsy2xp26fkwy2" path="res://word_container.tscn" id="2_0vspn"]
@@ -51,27 +51,11 @@ corner_radius_bottom_left = 4
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6n8q"]
 texture = ExtResource("18_g3gbl")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l627u"]
-bg_color = Color(0, 0.545098, 0.105882, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="SystemFont" id="SystemFont_kf0k8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dclai"]
-bg_color = Color(0, 0.443137, 0.0784314, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="FontVariation" id="FontVariation_p8uoi"]
+base_font = SubResource("SystemFont_kf0k8")
+variation_embolden = 0.75
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_va2r5"]
 bg_color = Color(0.772549, 0, 0.101961, 1)
@@ -95,6 +79,34 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l627u"]
+bg_color = Color(0, 0.545098, 0.105882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dclai"]
+bg_color = Color(0, 0.443137, 0.0784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="SystemFont" id="SystemFont_o86u1"]
+
+[sub_resource type="FontVariation" id="FontVariation_3ohud"]
+base_font = SubResource("SystemFont_o86u1")
+variation_embolden = 0.75
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_gp2fx")
 
@@ -108,37 +120,46 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_uq0l4")
 
-[node name="GameUI" type="HBoxContainer" parent="GameLayer/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameLayer/Background"]
 layout_mode = 2
 
-[node name="InputLetterListContainer" type="VBoxContainer" parent="GameLayer/Background/GameUI"]
+[node name="TopSpacing" type="Control" parent="GameLayer/Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="GameUI" type="HBoxContainer" parent="GameLayer/Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InputLetterListContainer" type="VBoxContainer" parent="GameLayer/Background/VBoxContainer/GameUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TopSpacing" type="Control" parent="GameLayer/Background/GameUI/InputLetterListContainer"]
+[node name="TopSpacing" type="Control" parent="GameLayer/Background/VBoxContainer/GameUI/InputLetterListContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
+size_flags_stretch_ratio = 2.5
 
-[node name="MarginContainer" type="MarginContainer" parent="GameLayer/Background/GameUI/InputLetterListContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameLayer/Background/VBoxContainer/GameUI/InputLetterListContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 44
 theme_override_constants/margin_right = 58
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameLayer/Background/GameUI/InputLetterListContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameLayer/Background/VBoxContainer/GameUI/InputLetterListContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="LeftSpacing" type="Control" parent="GameLayer/Background/GameUI/InputLetterListContainer/MarginContainer/HBoxContainer"]
+[node name="LeftSpacing" type="Control" parent="GameLayer/Background/VBoxContainer/GameUI/InputLetterListContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameLayer/Background/GameUI/InputLetterListContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameLayer/Background/VBoxContainer/GameUI/InputLetterListContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="HintLabel" type="Label" parent="GameLayer/Background/GameUI/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HintLabel" type="Label" parent="GameLayer/Background/VBoxContainer/GameUI/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -146,28 +167,23 @@ theme_override_font_sizes/font_size = 22
 text = "(click here to guess)"
 horizontal_alignment = 1
 
-[node name="InputLetterList" parent="GameLayer/Background/GameUI/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
+[node name="InputLetterList" parent="GameLayer/Background/VBoxContainer/GameUI/InputLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
-[node name="BottomSpacing" type="Control" parent="GameLayer/Background/GameUI/InputLetterListContainer"]
+[node name="BottomSpacing" type="Control" parent="GameLayer/Background/VBoxContainer/GameUI/InputLetterListContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="MiddleContainer" type="VBoxContainer" parent="GameLayer/Background/GameUI"]
+[node name="MiddleContainer" type="VBoxContainer" parent="GameLayer/Background/VBoxContainer/GameUI"]
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.0
 alignment = 1
 
-[node name="TopSpacing" type="Control" parent="GameLayer/Background/GameUI/MiddleContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.3
-
-[node name="Title" type="Label" parent="GameLayer/Background/GameUI/MiddleContainer"]
+[node name="Title" type="Label" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -179,70 +195,116 @@ text = "NYT TECH GUILD STRIKE"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="STRIKEMAN" type="HBoxContainer" parent="GameLayer/Background/GameUI/MiddleContainer"]
+[node name="STRIKEMAN" type="HBoxContainer" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="S" parent="GameLayer/Background/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+[node name="S" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("9_aod6v")
 
-[node name="T" parent="GameLayer/Background/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+[node name="T" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("7_6wbna")
 
-[node name="R" parent="GameLayer/Background/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+[node name="R" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("8_hq5ei")
 
-[node name="I" parent="GameLayer/Background/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+[node name="I" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("9_ph2b4")
 
-[node name="K" parent="GameLayer/Background/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+[node name="K" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("10_30fvs")
 
-[node name="E" parent="GameLayer/Background/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+[node name="E" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("10_qqbmp")
 
-[node name="M" parent="GameLayer/Background/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+[node name="M" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("10_ttlbk")
 
-[node name="A2" parent="GameLayer/Background/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+[node name="A2" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("13_hqjv0")
 
-[node name="N" parent="GameLayer/Background/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
+[node name="N" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer/STRIKEMAN" instance=ExtResource("5_ims2l")]
 layout_mode = 2
 letterModel = ExtResource("8_hi3uk")
 
-[node name="TitleSpacing" type="Control" parent="GameLayer/Background/GameUI/MiddleContainer"]
+[node name="TitleSpacing" type="Control" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.05
+size_flags_stretch_ratio = 0.25
 
-[node name="StrikemanTexture" type="TextureRect" parent="GameLayer/Background/GameUI/MiddleContainer"]
+[node name="StrikemanTexture" type="TextureRect" parent="GameLayer/Background/VBoxContainer/GameUI/MiddleContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("13_m3tkr")
 expand_mode = 5
 
-[node name="MiddleSpacing" type="Control" parent="GameLayer/Background/GameUI/MiddleContainer"]
-visible = false
+[node name="WrongLetterListContainer" type="VBoxContainer" parent="GameLayer/Background/VBoxContainer/GameUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopSpacing" type="Control" parent="GameLayer/Background/VBoxContainer/GameUI/WrongLetterListContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.5
+
+[node name="MarginContainer" type="MarginContainer" parent="GameLayer/Background/VBoxContainer/GameUI/WrongLetterListContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 58
+theme_override_constants/margin_right = 44
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameLayer/Background/VBoxContainer/GameUI/WrongLetterListContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameLayer/Background/VBoxContainer/GameUI/WrongLetterListContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HintLabel" type="Label" parent="GameLayer/Background/VBoxContainer/GameUI/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "(misses go here)"
+horizontal_alignment = 1
+
+[node name="WrongLetterList" parent="GameLayer/Background/VBoxContainer/GameUI/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+listType = 1
+
+[node name="RightSpacing" type="Control" parent="GameLayer/Background/VBoxContainer/GameUI/WrongLetterListContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="BottomSpacing" type="Control" parent="GameLayer/Background/VBoxContainer/GameUI/WrongLetterListContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="WordContainer" parent="GameLayer/Background/GameUI/MiddleContainer" instance=ExtResource("2_0vspn")]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="GameLayer/Background/VBoxContainer"]
 layout_mode = 2
-size_flags_stretch_ratio = 0.25
-currentWord = "Solidarity"
+size_flags_vertical = 3
 
-[node name="HintLabel" type="Label" parent="GameLayer/Background/GameUI/MiddleContainer"]
+[node name="Control" type="Control" parent="GameLayer/Background/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameLayer/Background/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HintLabel" type="Label" parent="GameLayer/Background/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_stretch_ratio = 0.5
@@ -252,9 +314,21 @@ text = "(guess this word!)"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="NewPuzzleButton2" type="Button" parent="GameLayer/Background/GameUI/MiddleContainer"]
-custom_minimum_size = Vector2(0, 44)
+[node name="WordContainer" parent="GameLayer/Background/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_0vspn")]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_stretch_ratio = 0.15
+currentWord = "Solidarity"
+
+[node name="MiddleSpacing" type="Control" parent="GameLayer/Background/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="NewPuzzleButton2" type="Button" parent="GameLayer/Background/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(144, 44)
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.01
 focus_mode = 0
@@ -267,56 +341,14 @@ theme_override_styles/disabled = ExtResource("21_vbmgb")
 theme_override_styles/focus = ExtResource("21_vbmgb")
 text = "New Puzzle"
 
-[node name="BottomSpacing" type="Control" parent="GameLayer/Background/GameUI/MiddleContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
-
-[node name="WrongLetterListContainer" type="VBoxContainer" parent="GameLayer/Background/GameUI"]
+[node name="Control2" type="Control" parent="GameLayer/Background/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TopSpacing" type="Control" parent="GameLayer/Background/GameUI/WrongLetterListContainer"]
+[node name="BottomSpacing" type="Control" parent="GameLayer/Background/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-
-[node name="MarginContainer" type="MarginContainer" parent="GameLayer/Background/GameUI/WrongLetterListContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 58
-theme_override_constants/margin_right = 44
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameLayer/Background/GameUI/WrongLetterListContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameLayer/Background/GameUI/WrongLetterListContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="HintLabel" type="Label" parent="GameLayer/Background/GameUI/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
-text = "(misses go here)"
-horizontal_alignment = 1
-
-[node name="WrongLetterList" parent="GameLayer/Background/GameUI/WrongLetterListContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_gc47r")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(275, 0)
-layout_mode = 2
-listType = 1
-
-[node name="RightSpacing" type="Control" parent="GameLayer/Background/GameUI/WrongLetterListContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-
-[node name="BottomSpacing" type="Control" parent="GameLayer/Background/GameUI/WrongLetterListContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
+size_flags_stretch_ratio = 0.5
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -372,17 +404,52 @@ theme_override_constants/margin_bottom = 100
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_p8uoi")
+theme_override_font_sizes/font_size = 22
+text = "The NYT Tech Guild is on strike! "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "The NYT Tech Guild is on strike! We're asking our public supporters to boycott use of NYT Games and the NYT Cooking app.
+text = "We're asking our public supporters to boycott use of NYT Games and the NYT Cooking app.
 
-We're protesting by making these games for you to play instead!"
+We're making free games for you to play instead in protest.
+
+Find them here:"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="GuildBuildsButton2" type="Button" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("20_k582u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_va2r5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6tsfm")
+theme_override_styles/disabled = ExtResource("20_k582u")
+theme_override_styles/focus = ExtResource("20_k582u")
+text = "Guild Builds"
+
+[node name="DividerSpacing" type="Control" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.4
 
 [node name="Control" type="Control" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -399,13 +466,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="DividerSpacing2" type="Control" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.4
+
 [node name="Label2" type="Label" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "Please consider contributing to our solidarity fund:"
+text = "Please also consider contributing to our solidarity fund:"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -416,13 +489,13 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("19_i2uy6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l627u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dclai")
 theme_override_styles/disabled = ExtResource("19_i2uy6")
 theme_override_styles/focus = ExtResource("19_i2uy6")
-text = "DONATE
+text = "Donate
 "
 
 [node name="ResultMenu" type="PanelContainer" parent="MenuLayer/PopupBackground/CenterContainer"]
@@ -434,7 +507,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_n6n8q")
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/PopupBackground/CenterContainer/ResultMenu"]
 layout_mode = 2
 theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 100
+theme_override_constants/margin_top = 70
 theme_override_constants/margin_right = 150
 theme_override_constants/margin_bottom = 100
 
@@ -447,6 +520,7 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_3ohud")
 theme_override_font_sizes/font_size = 20
 text = "Splendid!"
 horizontal_alignment = 1
@@ -547,10 +621,11 @@ theme_override_font_sizes/font_size = 48
 text = "X"
 flat = true
 
-[connection signal="pressed" from="GameLayer/Background/GameUI/MiddleContainer/NewPuzzleButton2" to="MenuLayer" method="_newPuzzleButtonPressed"]
+[connection signal="pressed" from="GameLayer/Background/VBoxContainer/HBoxContainer/VBoxContainer/NewPuzzleButton2" to="MenuLayer" method="_newPuzzleButtonPressed"]
 [connection signal="pressed" from="MenuLayer/HBoxContainer/GuildButton" to="MenuLayer" method="_guildWebsiteButtonPressed"]
 [connection signal="pressed" from="MenuLayer/HBoxContainer/InfoButton" to="MenuLayer" method="_infoButtonPressed"]
 [connection signal="gui_input" from="MenuLayer/PopupBackground" to="MenuLayer" method="_menuBackgroundInput"]
+[connection signal="pressed" from="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer/GuildBuildsButton2" to="MenuLayer" method="_guildBuildsButtonPressed"]
 [connection signal="pressed" from="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer/DonateButton" to="MenuLayer" method="_donateButtonPressed"]
 [connection signal="pressed" from="MenuLayer/PopupBackground/CenterContainer/ResultMenu/MarginContainer/VBoxContainer/NewPuzzleButton" to="MenuLayer" method="_newPuzzleButtonPressed"]
 [connection signal="pressed" from="MenuLayer/PopupBackground/CenterContainer/ResultMenu/MarginContainer/VBoxContainer/GuildBuildsButton" to="MenuLayer" method="_guildBuildsButtonPressed"]
