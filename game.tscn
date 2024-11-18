@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bfa3o3pwpxc48"]
+[gd_scene load_steps=32 format=3 uid="uid://bfa3o3pwpxc48"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_gp2fx"]
 [ext_resource type="PackedScene" uid="uid://bsy2xp26fkwy2" path="res://word_container.tscn" id="2_0vspn"]
@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://wxqlqooi500q" path="res://techguild-logo.jpg" id="17_216gj"]
 [ext_resource type="Script" path="res://menu_manager.gd" id="17_w8dic"]
 [ext_resource type="Texture2D" uid="uid://cxy3k5nss62o6" path="res://postitnote-removebg-preview (1).png" id="18_g3gbl"]
-[ext_resource type="StyleBox" uid="uid://dfya8433jy05" path="res://donate_button.tres" id="19_i2uy6"]
 [ext_resource type="StyleBox" uid="uid://b7dgpgsxiklu0" path="res://guild_builds_button.tres" id="20_k582u"]
 [ext_resource type="StyleBox" uid="uid://df21yku6k773n" path="res://see_puzzle_button.tres" id="21_vbmgb"]
 
@@ -70,28 +69,6 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tsfm"]
 bg_color = Color(0.662745, 0, 0.0823529, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l627u"]
-bg_color = Color(0, 0.545098, 0.105882, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dclai"]
-bg_color = Color(0, 0.443137, 0.0784314, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -388,16 +365,15 @@ layout_mode = 2
 
 [node name="InfoMenu" type="PanelContainer" parent="MenuLayer/PopupBackground/CenterContainer"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(650, 650)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_n6n8q")
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu"]
 layout_mode = 2
-theme_override_constants/margin_left = 150
+theme_override_constants/margin_left = 130
 theme_override_constants/margin_top = 115
-theme_override_constants/margin_right = 150
+theme_override_constants/margin_right = 130
 theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer"]
@@ -410,7 +386,8 @@ size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_p8uoi")
 theme_override_font_sizes/font_size = 22
-text = "The NYT Tech Guild is on strike! "
+text = "The NYT Tech Guild 
+is no longer on strike!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -421,11 +398,9 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "We're asking our public supporters to boycott use of NYT Games and the NYT Cooking app.
+text = "But we're still fighting for a fair contract. Management is avoiding the bargaining table, so we're putting on the pressure from the inside.
 
-We're making free games for you to play instead in protest.
-
-Find them here:"
+Find more free NYT built games here:"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -449,57 +424,11 @@ text = "Guild Builds"
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.4
-
-[node name="Control" type="Control" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ColorRect" type="ColorRect" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer/Control"]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="DividerSpacing2" type="Control" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 22)
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.4
-
-[node name="Label2" type="Label" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Please also consider contributing to our solidarity fund:"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="DonateButton" type="Button" parent="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("19_i2uy6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l627u")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_dclai")
-theme_override_styles/disabled = ExtResource("19_i2uy6")
-theme_override_styles/focus = ExtResource("19_i2uy6")
-text = "Donate
-"
+size_flags_stretch_ratio = 0.5
 
 [node name="ResultMenu" type="PanelContainer" parent="MenuLayer/PopupBackground/CenterContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(650, 650)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_n6n8q")
@@ -626,7 +555,6 @@ flat = true
 [connection signal="pressed" from="MenuLayer/HBoxContainer/InfoButton" to="MenuLayer" method="_infoButtonPressed"]
 [connection signal="gui_input" from="MenuLayer/PopupBackground" to="MenuLayer" method="_menuBackgroundInput"]
 [connection signal="pressed" from="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer/GuildBuildsButton2" to="MenuLayer" method="_guildBuildsButtonPressed"]
-[connection signal="pressed" from="MenuLayer/PopupBackground/CenterContainer/InfoMenu/MarginContainer/VBoxContainer/DonateButton" to="MenuLayer" method="_donateButtonPressed"]
 [connection signal="pressed" from="MenuLayer/PopupBackground/CenterContainer/ResultMenu/MarginContainer/VBoxContainer/NewPuzzleButton" to="MenuLayer" method="_newPuzzleButtonPressed"]
 [connection signal="pressed" from="MenuLayer/PopupBackground/CenterContainer/ResultMenu/MarginContainer/VBoxContainer/GuildBuildsButton" to="MenuLayer" method="_guildBuildsButtonPressed"]
 [connection signal="pressed" from="MenuLayer/ClosePopupButton" to="MenuLayer" method="_closePopupPressed"]
